@@ -11,7 +11,7 @@
 Stop pretending to be a whale. `Degen Audit` pulls your real on-chain trading behavior via Helius RPC, bypasses LLM hallucinations, and exposes your true trading psychology with zero sugar-coating.
 
 ### 🔗 Live Demo
-[👉 Try it here on Streamlit] (部署完成后，把真实网页链接替换到这里)
+[👉 Try it here on Streamlit] (https://degenaudit.streamlit.app/)
 
 ### 🩸 Why I Built This?
 In the current Web3 landscape, most wallet trackers only show boring PnL (Profit and Loss). They fail to capture the **"Vibe"** and the actual psychological state of a trader. Furthermore, direct LLM analysis on blockchain data often leads to severe hallucinations (e.g., faking transaction counts).
@@ -43,7 +43,7 @@ This is an MVP. Not financial advice. Strictly for entertainment and behavioral 
 别装巨鲸了。`Degen Audit` 通过 Helius RPC 强行扒下你的链上底裤，绕过大模型幻觉，用最极客的方式暴击你的真实交易心理。
 
 ### 🔗 在线体验
-[👉 点击此处在 Streamlit 体验] (部署完成后，把真实网页链接替换到这里)
+[👉 点击此处在 Streamlit 体验] (https://degenaudit.streamlit.app/)
 
 ### 🩸 为什么做这个破玩意儿？
 当下的 Web3 追踪工具全在盯着干瘪的 PnL 数据，根本抓不住交易者真实的“情绪 Vibe”和心理状态。更致命的是，让大模型直接读链上脏数据，会导致极其严重的 AI 幻觉（比如凭空捏造交易次数）。
