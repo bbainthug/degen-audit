@@ -38,14 +38,14 @@ This is an MVP. Not financial advice. Strictly for entertainment and behavioral 
 
 ## 🇨🇳 中文版
 
-**一台专为 Solana 赌狗量身定制的 AI 无情嘲讽机。**
+**一台专为赌狗量身定制的无情嘲讽AI。**
 
 别装巨鲸了。`Degen Audit` 通过 Helius RPC 强行扒下你的链上底裤，绕过大模型幻觉，用最极客的方式暴击你的真实交易心理。
 
 ### 🔗 在线体验
 [👉 点击此处在 Streamlit 体验] (https://degenaudit.streamlit.app/)
 
-### 🩸 为什么做这个破玩意儿？
+### 🩸 为什么做这个？
 当下的 Web3 追踪工具全在盯着干瘪的 PnL 数据，根本抓不住交易者真实的“情绪 Vibe”和心理状态。更致命的是，让大模型直接读链上脏数据，会导致极其严重的 AI 幻觉（比如凭空捏造交易次数）。
 
 **我的降维打击方案:**
@@ -60,8 +60,8 @@ This is an MVP. Not financial advice. Strictly for entertainment and behavioral 
 
 ### 🔪 核心杀器
 - **钱包透视:** 光速解析 Solana 脏数据。
-- **属性开盒:** 精准打上“钻石手”、“赛博乞丐”、“内幕老鼠”等标签。
+- **属性开盒:** 精准打上“钻石手”、“乞丐”、“内幕老鼠”等标签。
 - **破防暴击:** 生成极具 CT (Crypto Twitter) 攻击性的专属嘲讽报告。
 
 ### ⚠️ 免责声明
-极客玩具，非投资建议。你的任何 API 凭证均不会被保留或上传。
+链上玩具，非投资建议。任何 API 凭证均不会被保留或上传。
