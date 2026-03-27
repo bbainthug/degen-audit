@@ -137,7 +137,15 @@ def get_ai_roast(profile_data: dict, lang: str = 'zh') -> str:
     if not api_key:
         return 'API 密钥未配置，无法进行侧写分析。'
 
-    transport = httpx.HTTPTransport(proxy='http://127.0.0.1:7891')
+    # 智能代理：本地有代理就用，云端直连
+    _proxy_url = 'http://127.0.0.1:7891'
+    try:
+        import socket as _socket
+        _s = _socket.create_connection(('127.0.0.1', 7891), timeout=0.3)
+        _s.close()
+        transport = httpx.HTTPTransport(proxy=_proxy_url)
+    except Exception:
+        transport = httpx.HTTPTransport()
     http_client = httpx.Client(transport=transport, timeout=120)
     client = OpenAI(
         api_key=api_key,

@@ -20,6 +20,17 @@ def _get_helius_key() -> str:
         key = os.getenv('HELIUS_API_KEY', '')
     return (key or '').strip()
 
+# 🌐 智能代理：本地有代理就用，云端直连
+def _get_proxies() -> dict:
+    proxy_url = "http://127.0.0.1:7891"
+    try:
+        import socket
+        s = socket.create_connection(("127.0.0.1", 7891), timeout=0.3)
+        s.close()
+        return {"http": proxy_url, "https": proxy_url}
+    except Exception:
+        return {}
+
 # ─────────────────────────────────────────────
 # 代币池
 # ─────────────────────────────────────────────
@@ -45,10 +56,7 @@ def _call_helius(rpc_method: str, params: List):
         'params': params,
     }
 
-    proxies = {
-        "http": "http://127.0.0.1:7891",
-        "https": "http://127.0.0.1:7891",
-    }
+    proxies = _get_proxies()
 
     try:
         response = requests.post(
@@ -93,10 +101,7 @@ def _fetch_helius_transactions(wallet_address: str, limit: int = 100) -> List[Di
         return []
 
     url = f"https://api.helius.xyz/v0/addresses/{wallet_address}/transactions"
-    proxies = {
-        "http": "http://127.0.0.1:7891",
-        "https": "http://127.0.0.1:7891",
-    }
+    proxies = _get_proxies()
 
     all_txs = []
     before = None
@@ -295,7 +300,7 @@ def _estimate_daily_tx_count(wallet_address: str, recent_tx_count_100: int) -> i
         return recent_tx_count_100 or 0
 
     url = f"https://api.helius.xyz/v0/addresses/{wallet_address}/transactions"
-    proxies = {"http": "http://127.0.0.1:7891", "https": "http://127.0.0.1:7891"}
+    proxies = _get_proxies()
     try:
         r = requests.get(url, params={"api-key": api_key, "limit": 100},
                          proxies=proxies, timeout=12)
