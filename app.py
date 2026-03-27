@@ -5,6 +5,19 @@ import streamlit as st
 import data_engine
 import ai_profiler
 
+# 🛡️ 兼容 Streamlit 云端 Secrets + 本地 .env
+try:
+    _HELIUS_KEY = st.secrets.get("HELIUS_API_KEY") or os.getenv("HELIUS_API_KEY", "")
+    _NVIDIA_KEY = st.secrets.get("NVIDIA_API_KEY") or os.getenv("NVIDIA_API_KEY", "")
+except Exception:
+    _HELIUS_KEY = os.getenv("HELIUS_API_KEY", "")
+    _NVIDIA_KEY = os.getenv("NVIDIA_API_KEY", "")
+
+print(f"--- DEBUG START ---")
+print(f"HELIUS_KEY is None: {not _HELIUS_KEY}")
+print(f"NVIDIA_KEY is None: {not _NVIDIA_KEY}")
+print(f"--- DEBUG END ---")
+
 # ─────────────────────────────────────────────
 # 全局配置
 # ─────────────────────────────────────────────

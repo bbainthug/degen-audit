@@ -5,6 +5,15 @@ from openai import OpenAI
 
 load_dotenv()
 
+# 🛡️ 兼容 Streamlit 云端 Secrets + 本地 .env
+def _get_nvidia_key() -> str:
+    try:
+        import streamlit as st
+        key = st.secrets.get("NVIDIA_API_KEY") or os.getenv('NVIDIA_API_KEY', '')
+    except Exception:
+        key = os.getenv('NVIDIA_API_KEY', '')
+    return (key or '').strip()
+
 # 动态 Few-Shot 范本库
 FEW_SHOT_LIBRARY = {
     'hf_cold': '一天对着 Pump.fun 上的同一个狗屎盘子疯狂抽插 100 次，1 秒钟的微薄利润也要榨干。你这不是在交易，你是个挂在 RPC 节点上舔滑点的RPC节点打工狗。为了抠别人那几美分的差价，你的电费和 Gas 费快把利润烧穿了吧？硅基生命里的底层打工狗。',
@@ -124,7 +133,7 @@ def get_ai_roast(profile_data: dict, lang: str = 'zh') -> str:
     根据 profile_data 生成 AI 评语。
     lang: 'zh' 中文暴躁游资模式 | 'en' 英文 CT 街头灵魂模式
     """
-    api_key = os.getenv('NVIDIA_API_KEY')
+    api_key = _get_nvidia_key()
     if not api_key:
         return 'API 密钥未配置，无法进行侧写分析。'
 

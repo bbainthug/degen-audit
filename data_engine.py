@@ -9,8 +9,16 @@ from typing import Dict, List
 import requests
 
 from dotenv import load_dotenv
-
 load_dotenv()
+
+# 🛡️ 兼容 Streamlit 云端 Secrets + 本地 .env
+def _get_helius_key() -> str:
+    try:
+        import streamlit as st
+        key = st.secrets.get("HELIUS_API_KEY") or os.getenv('HELIUS_API_KEY', '')
+    except Exception:
+        key = os.getenv('HELIUS_API_KEY', '')
+    return (key or '').strip()
 
 # ─────────────────────────────────────────────
 # 代币池
@@ -21,10 +29,6 @@ STABLE_TOKENS = ['USDC', 'USDT', 'DAI', 'BUSD']
 DEFI_TOKENS   = ['RAY', 'ORCA', 'JTO', 'JUP', 'PYTH']
 OLD_TOKENS    = ['EOS', 'ADA', 'LTC', 'XRP', 'TRX']
 ALL_TOKENS    = MEME_TOKENS + MAJOR_TOKENS + STABLE_TOKENS + DEFI_TOKENS
-
-
-def _get_helius_key() -> str:
-    return os.getenv('HELIUS_API_KEY', '').strip()
 
 
 def _call_helius(rpc_method: str, params: List):
