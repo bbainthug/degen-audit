@@ -16,16 +16,32 @@ def _get_nvidia_key() -> str:
 
 # 动态 Few-Shot 范本库
 FEW_SHOT_LIBRARY = {
-    'hf_cold': '一天对着 Pump.fun 上的同一个狗屎盘子疯狂抽插 100 次，1 秒钟的微薄利润也要榨干。你这不是在交易，你是个挂在 RPC 节点上舔滑点的RPC节点打工狗。为了抠别人那几美分的差价，你的电费和 Gas 费快把利润烧穿了吧？硅基生命里的底层打工狗。',
-    'hf_rage': '平均持仓 1 秒？兄弟，你这不仅是纸手，你这是极其严重的极端早泄。24 小时内在一个土狗币上买卖 100 次，你的多巴胺受体已经被这根 K 线彻底烧毁了。你不是在炒币，你是在把 Solana 当成刮刮乐疯狂摩擦。建议尽早拔掉网线，去医院挂个泌尿科。',
-    'hf_short': '在同一个 Pump.fun 垃圾盘里，1秒进，1秒出，一天抽搐 100 次。华尔街的高频量化要是看了你的操作，都得连夜给你发个保安的 Offer。你的键盘上是不是只剩下 Buy 和 Sell 两个键了？',
-    'hf_twitch': '24小时在同一个盘子里抽搐 100 次，平均持仓 72 秒？你这不是在交易，你是在给 Solana 网络的吞吐量做压力测试。这种毫无意义的极速纸手操作，除了给节点交 Gas 费，唯一的贡献就是证明了你是一个多巴胺中毒的低级脚本。建议去挂个脑科，看看你的反射弧是不是已经烧焦了。',
-    'hf_bot': '一天交易超过一千次，每笔金额 $0.001，胜率 32%？你这根本不是人在炒币，你是个挂在 RPC 节点上撒网的低级扫射脚本。策略就是往一万个垃圾盘里各扔一分钱，碰运气等个百倍盘。Gas 费和手续费加起来早把利润吃光了吧？链上寄生虫，滚去 touch grass。',
-    'fomo': '看到推特大V一喊单你就高潮，满仓冲进去刚好给庄家发退休金。你的胜率比抛硬币还惨，买的全是貔貅和被撤池子的杀猪盘。你的钱包不仅是Web3垃圾场，更是你智商的火化炉。风很大，套得很冷吧？',
+    # ── 纸手 / Jeet ──
+    'jeet_1': '你就这点出息？持仓时间比你那啥时间都短。你是来交易的，还是来给 Solana 贡献手续费的？看到绿柱子就手抖，看到红柱子就尿裤子，夹子机器人看你都像在看自助餐。',
+    'jeet_2': '恭喜你，凭借一己之力养活了三个套利机器人。你的操作逻辑总结起来就四个字：反复去世。这种持仓时长，建议出门左转去买彩票，别在链上丢人现眼了。',
+    'jeet_3': '你是懂落袋为安的，每次都精准避开了所有的涨幅。你上辈子可能是个割肉机，这辈子专门来链上当人体润滑剂，帮庄家丝滑出货。',
+    # ── 接盘侠 / 顶级韭菜 ──
+    'bagholder_1': '你是打算把这些归零土狗当成传家宝吗？项目方推特都注销了，你还在那儿格局？你不是在投资，你是在搞赛博慈善。你的钱包就是土狗币的终点站，所有垃圾最后都会死在你手里。',
+    'bagholder_2': '在山顶站岗的感觉冷吗？你这种至死不渝的浪漫，让庄家在会所嫩模时都忍不住想给你点个赞。你不是在买币，你是在给项目方付豪宅首付。',
+    'bagholder_3': '别看了，解套是不可能解套的，这辈子都不可能。你对价值投资的误解比你的亏损还要深。建议把钱包助记词刻在墓碑上，看看下辈子能不能回本。',
+    # ── 赛博乞丐 ──
+    'beggar_1': '你是来 Solana 上捡破烂的吗？这钱包里的余额连吃顿黄焖鸡都费劲。你的交易记录像极了垃圾邮件箱，除了灰尘就是废纸。就这几块钱，你还盯着看了一下午？',
+    'beggar_2': '这种持仓规模，别叫 Degen 了，叫赛博盲流更合适。你在链上忙活半天，赚的还没给 Helius 贡献的流量多。求求你，找个班上吧，别在 Web3 浪费网费了。',
+    # ── FOMO 冲子 / 逆向指标 ──
+    'fomo_1': '你就是传说中的人形反向指标？只要你一买，项目方就想跑路；只要你一卖，币价就开始升天。这种精准踩雷的天赋，Arkham 都得请你去当顾问。',
+    'fomo_2': '别问为什么又被 Rug 了，问就是智商欠费。你这种无脑冲高位的姿态，让所有 12 岁项目方开发者都感受到了这个世界的温暖。你是他们的光，你是他们退出的流动性。',
+    # ── 高频刷单 ──
+    'hf_cold': '一天对着同一个垃圾盘疯狂抽插 100 次，1 秒钟的微薄利润也要榨干。你这不是在交易，你是个挂在 RPC 节点上舔滑点的打工狗。Gas 费快把利润烧穿了吧？',
+    'hf_rage': '平均持仓 1 秒？不仅是纸手，是极度严重的极端早泄。24 小时在同一个土狗上抽搐 100 次，你的多巴胺受体已经被这根 K 线彻底烧毁了。你不是在炒币，你是把 Solana 当成刮刮乐疯狂摩擦。',
+    'hf_twitch': '24小时在同一个盘子里抽搐 100 次，平均持仓 72 秒？除了给节点交 Gas 费，唯一的贡献就是证明了你是一个多巴胺中毒的低级脚本。去挂个脑科，看看你的反射弧是不是已经烧焦了。',
+    # ── 撸毛乞丐 ──
     'airdrop': '每天像个丐帮一样在各大链上点鼠标，交的 Gas 费比你这辈子赚的空投都多。V神看到你的转账记录都得连夜给你发个低保。别搁这假装 Web3 建设者了，你那手速去电子厂拧螺丝早当上车间主任了。',
-    'smart_money': '胜率 80%、精准逃顶？行吧，算你狠。看你这毫无感情的机器操作，估计天天熬夜盯盘头发都掉光了吧？老鼠仓的铜臭味隔着屏幕都能闻到。恭喜你赚麻了，赶紧滚去摸摸草（Touch grass）吧，Fuck you and congrats. 你现实生活应该极度枯燥，朋友圈最后一条动态还是 2019 年发的吧？',
-    'diamond_hand': '跌了 90% 还在加仓，你把"抄底"玩成了"抄家"。别人是炒币，你是在跟这个垃圾项目谈一场没有结果的恋爱。你这种极度自律的慢性自杀，庄家看了都得给你磕个头。醒醒吧大怨种，人家创始人早拿你的钱去 KTV 搂嫩模了。',
-    'chaos': '钱包里躺着几十个名字都没听过的土狗币，每个价值不到 1 块钱。你这不是投资组合，你这特么是 Web3 废品回收站。到处撒网，精准踩雷，你对这个黑暗森林的贡献，就是用真金白银给所有骗子送外卖。',
+    # ── 逃顶神（嫉妒嘲讽）──
+    'smart_money': '胜率 80%、精准逃顶？行吧，算你狠。老鼠仓的铜臭味隔着屏幕都能闻到。赚麻了赶紧滚去 touch grass，你现实生活应该极度枯燥，朋友圈最后一条动态还是 2019 年发的吧？Fuck you and congrats.',
+    # ── 死扛 ──
+    'diamond_hand': '跌了 90% 还在加仓，你把抄底玩成了抄家。别人是炒币，你是在跟垃圾项目谈一场没有结果的恋爱。人家创始人早拿你的钱去 KTV 搂嫩模了。醒醒吧大怨种。',
+    # ── 杂牌收集 ──
+    'chaos': '钱包里躺着几十个名字没听过的土狗币，每个价值不到 1 块钱。这不是投资组合，这是 Web3 废品回收站。到处撒网精准踩雷，你对这个黑暗森林的唯一贡献就是用真金白银给所有骗子送外卖。',
 }
 
 
@@ -38,7 +54,21 @@ FEW_SHOT_LIBRARY_EN = {
     'airdrop_en': 'Clicking around every chain like a cyber-beggar guild, spending more on gas than every airdrop you have ever farmed combined. Vitalik would personally mail you a welfare check if he saw your transaction history. Stop larping as a Web3 builder — your click speed belongs on a factory floor.',
     'smart_money_en': '80% win rate and perfect exits? We see you, insider dev. No normal human grinds these numbers without either a bot or insider info. Enjoy your rugs while the SEC nap lasts. Your real life must be absolutely cooked — when did you last touch grass? Fuck you and congrats, I guess.',
     'diamond_hand_en': 'Down 90% and still buying? You turned buying the dip into buying the grave. Everyone else trades coins — you are in a parasocial relationship with a dead project. The dev already bounced to Bali with your money. Wake up, professional bag-holder.',
-    'chaos_en': 'Dozens of coins in your wallet that nobody has heard of, each worth less than a dollar. That is not a portfolio — that is a Web3 junkyard. Casting nets everywhere, stepping on every landmine. Your contribution to this dark forest is delivering food to every scammer at your own expense.',
+    'chaos_en': 'Dozens of coins nobody has ever heard of, each worth less than a dollar. That is not a portfolio — that is a Web3 junkyard. Casting nets everywhere, stepping on every single landmine. Your contribution to this ecosystem is personally funding every scammer\'s exit.',
+    # ── Jeet / paper hands ──
+    'jeet_1_en': 'That\'s all you got? Your average hold time is shorter than your attention span. Are you here to trade or to personally fund Solana validator fees? Green candle and your hand trembles. Red candle and you\'ve already wet yourself. MEV bots look at your wallet like an all-you-can-eat buffet.',
+    'jeet_2_en': 'Congratulations — you single-handedly kept three arbitrage bots profitable this month. Your entire trading philosophy can be summarized in two words: perpetual exit liquidity. With hold times like these, go buy lottery tickets. Stop embarrassing yourself on-chain.',
+    'jeet_3_en': 'You really understand taking profits — you just happen to take them right before every single pump. You were probably a stop-loss machine in a past life. This life, you showed up on-chain to be the human lubricant that helps devs dump smoothly.',
+    # ── bagholder / top buyer ──
+    'bagholder_1_en': 'You planning to pass these zeroed-out dog coins down as inheritance? The dev\'s Twitter is deleted and you\'re out here talking about fundamentals. You\'re not investing — you\'re running a crypto charity. Your wallet is the final destination for every piece of garbage in this ecosystem.',
+    'bagholder_2_en': 'How\'s it feel standing guard at the top? That devoted loyalty of yours — the dev is probably toasting you from his yacht right now. You\'re not buying coins. You\'re making the down payment on his next mansion.',
+    'bagholder_3_en': 'There is no recovery. There will never be a recovery. Your misunderstanding of value investing runs deeper than your losses. Consider tattooing your seed phrase on your tombstone and hoping for a better next life.',
+    # ── cyber beggar ──
+    'beggar_1_en': 'Did you come to Solana to dumpster dive? The balance in this wallet can\'t buy a meal. Your transaction history looks exactly like a spam folder — nothing but dust and dead links. And you sat staring at this for an entire afternoon?',
+    'beggar_2_en': 'At this portfolio size, stop calling yourself a Degen — Cyber Vagrant is more accurate. You spent all afternoon grinding on-chain and your net gains are less than the bandwidth you gave Helius for free. Get a job. Stop wasting Wi-Fi on Web3.',
+    # ── FOMO ──
+    'fomo_1_en': 'You are literally a human inverse indicator. Every time you buy, the dev starts planning his exit. Every time you sell, the chart goes vertical. Your brain is exactly one phase shift behind the market at all times. Arkham Intelligence should hire you as a contrarian signal.',
+    'fomo_2_en': 'Stop asking why you got rugged again. The answer is IQ deficiency. Your reflex to ape into tops at full port has given every 12-year-old dev in this space a warm and fuzzy feeling. You are their light. You are their exit liquidity.',
 }
 
 
@@ -49,19 +79,19 @@ def _pick_dynamic_examples(tone: str, label: str, evidence: dict) -> list:
     diversity = int(evidence.get('token_diversity_count', 0) or 0)
     pool = []
     if any(k in label_l for k in ['高频', '短线', '纸手', 'mev', 'bot', '触手', '刷单']):
-        pool.extend(['hf_bot', 'hf_twitch', 'hf_cold', 'hf_rage', 'hf_short'])
+        pool.extend(['hf_twitch', 'hf_cold', 'hf_rage', 'jeet_1', 'jeet_2'])
     if any(k in label_l for k in ['接盘', '追高', '站岗', 'fomo', '貔貅', '受害', '只买']):
-        pool.extend(['fomo', 'chaos'])
+        pool.extend(['fomo_1', 'fomo_2', 'bagholder_1', 'bagholder_2', 'chaos'])
     if any(k in label_l for k in ['新盘', '狙击', '土狗猎']):
-        pool.extend(['chaos', 'hf_twitch'])
+        pool.extend(['chaos', 'hf_twitch', 'jeet_3'])
     if any(k in label_l for k in ['主流币', '波段', '伏击', '纪律']):
-        pool.extend(['smart_money', 'hf_short'])
+        pool.extend(['smart_money', 'jeet_1'])
     if any(k in label_l for k in ['撸毛', '低保', '交互']):
-        pool.extend(['airdrop', 'chaos'])
+        pool.extend(['airdrop', 'beggar_1', 'beggar_2'])
     if any(k in label_l for k in ['死扛', '钻石', '加仓']):
-        pool.extend(['diamond_hand', 'fomo'])
+        pool.extend(['diamond_hand', 'bagholder_3', 'bagholder_2'])
     if any(k in label_l for k in ['聪明钱', '巨鲸', '纪律', '伏击']):
-        pool.extend(['smart_money', 'hf_short'])
+        pool.extend(['smart_money'])
     if any(k in label_l for k in ['集邮', '多样', '丐帮', 'chaos', '废品']):
         pool.extend(['chaos', 'airdrop'])
     if tone == 'praise':
@@ -160,49 +190,97 @@ def get_ai_roast(profile_data: dict, lang: str = 'zh') -> str:
     dynamic_examples = _pick_dynamic_examples(tone=tone, label=label, evidence=evidence)
     examples_block = '\n'.join([f'- 范本{i+1}：{txt}' for i, txt in enumerate(dynamic_examples)])
 
-    # English 分支
+    # English 分支（模板驱动，与中文逻辑对齐）
     if lang == 'en':
         en_examples = _pick_dynamic_examples_en(tone=tone, label=label, evidence=evidence)
         en_examples_block = '\n'.join([f'- Example {i+1}: {txt}' for i, txt in enumerate(en_examples)])
-        tx_24h = evidence.get('transactions_last_24h', '?')
-        hold_sec = evidence.get('avg_hold_time_seconds', '?')
-        diversity = evidence.get('token_diversity_count', '?')
-        platform = evidence.get('platform_preference', '?')
-        top_token = profile_data.get('frequent_tokens') or evidence.get('致命操作') or ['unknown']
-        if tone != 'praise':
-            en_system = (
-                'You are a savage, sleep-deprived Crypto Twitter (CT) whale who hates everyone.\n\n'
-                'Mandatory rules:\n'
-                '1. Must mention: this is based on the last 50 tx slice only.\n'
-                f'2. Must quote at least 2 specific numbers ({tx_24h} trades/24h, avg hold {hold_sec}s, {diversity} tokens).\n'
-                '3. If avg hold < 60s and high freq: call them MEV bottom-feeder or high-speed jeeter.\n'
-                '4. If diversity >= 50: call them Web3 junk collector.\n'
-                '5. Output ~50 words. Banned: algorithm, remarkable, admirable.\n\n'
-                f'Examples:\n{en_examples_block}'
-            )
+        tx_24h    = int(evidence.get('transactions_last_24h', 0) or 0)
+        hold_sec  = int(evidence.get('avg_hold_time_seconds', 60) or 60)
+        diversity = int(evidence.get('token_diversity_count', 0) or 0)
+        avg_tx    = float(evidence.get('avg_tx_sol') or profile_data.get('avg_tx_sol', 0))
+        span_h    = float(evidence.get('span_hours') or profile_data.get('span_hours', 0))
+        avg_int   = int(evidence.get('avg_interval_seconds') or profile_data.get('avg_interval_seconds', 0))
+        pnl_ok    = bool(evidence.get('pnl_reliable') or profile_data.get('pnl_reliable', False))
+        rpnl      = float(evidence.get('realized_pnl_sol') or profile_data.get('realized_pnl_sol', 0) or 0)
+        wr        = float(evidence.get('win_rate') or profile_data.get('win_rate', 0) or 0)
+        avg_lose_e = float(evidence.get('avg_lose_sol') or profile_data.get('avg_lose_sol', 0) or 0)
+
+        if hold_sec < 60:
+            hold_str = f'{hold_sec}s'
+        elif hold_sec < 3600:
+            hold_str = f'{hold_sec // 60} min'
         else:
-            en_system = (
-                'You are a salty just-rekt CT degen, EXTREMELY jealous but cannot deny the numbers.\n'
-                'Backhanded compliment energy. Imply bot/insider. Mock real life. End with Fuck you and congrats.\n\n'
-                'Mandatory rules:\n'
-                '1. Must mention: last 50 tx slice only.\n'
-                '2. Must quote at least 2 data points.\n'
-                '3. Output ~50 words. Banned: algorithm, logic, admirable.\n\n'
-                f'Examples:\n{en_examples_block}'
-            )
-        en_user = (
-            f'Platform: {platform}, 24h trades: {tx_24h}, avg hold: {hold_sec}s, '
-            f'unique mints: {diversity}, top token: {top_token}. CT roast, ~50 words.'
-        )
+            hold_str = f'{hold_sec // 3600}h'
+
+        if span_h < 1:
+            density_str = f'last 100 txs done in {span_h*60:.0f} min, avg {avg_int}s per trade'
+        elif span_h < 24:
+            density_str = f'last 100 txs over {span_h:.1f}h, avg {avg_int//60} min per trade'
+        else:
+            density_str = f'last 100 txs over {span_h/24:.1f} days, avg {avg_int//3600}h per trade'
+
+        EN_TEMPLATES = {
+            'god_mode': (
+                f'{wr:.0f}% win rate and up {rpnl:+.2f} SOL? Sure bro. '
+                f'No human grinds numbers like that without a bot or inside info. '
+                f'Enjoy your rugs while the SEC nap lasts. '
+                f'Your real life must be completely cooked. Fuck you and congrats.'
+            ),
+            'beggar_mode': (
+                f'{density_str}, {tx_24h} token trades, avg hold {hold_str}, '
+                f'touched {diversity} garbage mints, avg {avg_tx:.2f} SOL per trade. '
+                f'You are not trading. You are personally funding every validator on this network. '
+                f'Your gas fees exceed your gains. Get a job.'
+            ),
+            'diamond_hands': (
+                f'Holding for {hold_str} while down bad? '
+                f'You turned buying the dip into buying the grave. '
+                f'The dev already bounced to Bali with your SOL. '
+                f'Wake up, professional bagholder.'
+            ),
+            'default': (
+                f'{density_str}, {tx_24h} trades, avg hold {hold_str}, {diversity} dog coins, {avg_tx:.2f} SOL avg. '
+                f'You are not a trader. You are exit liquidity with a wallet address. '
+                f'Every single move you make is a gift to someone smarter than you.'
+            ),
+        }
+
+        if tone == 'praise' and pnl_ok and rpnl > 5:
+            en_tmpl = EN_TEMPLATES['god_mode']
+        elif avg_tx < 0.5 and tx_24h >= 20:
+            en_tmpl = EN_TEMPLATES['beggar_mode']
+        elif hold_sec > 3600 * 6:
+            en_tmpl = EN_TEMPLATES['diamond_hands']
+        else:
+            en_tmpl = EN_TEMPLATES['default']
+
+        pnl_rule = f'PnL data reliable: win rate {wr:.0f}%, realized {rpnl:+.2f} SOL — must mention in roast.' if pnl_ok else 'PnL data unreliable — DO NOT mention any PnL, win rate, or SOL profit/loss numbers.'
+
+        en_system = f"""You are the most savage, foul-mouthed CT degen on the internet. You roast people\'s on-chain behavior like a Baidu Tieba OG — blunt, crude, zero mercy.
+You MUST follow the script below. Do NOT improvise. Do NOT soften the tone.
+
+[YOUR SCRIPT AND DATA]
+{en_tmpl}
+
+[YOUR ONLY JOB]
+Rewrite the script above using the most brutal, street-level CT slang possible.
+Keep ALL the data points. Keep the core insult. Max 80 words. End with a gut-punch closing line.
+Banned words: algorithm, remarkable, admirable, notable, impressive.
+{pnl_rule}
+
+[STYLE EXAMPLES]
+{en_examples_block}"""
+        en_user = 'Drop the roast. Now.'
         try:
             response = client.chat.completions.create(
                 model='meta/llama-3.3-70b-instruct',
                 messages=[{'role': 'system', 'content': en_system}, {'role': 'user', 'content': en_user}],
-                temperature=0.85, max_tokens=300,
+                temperature=0.9, max_tokens=300,
             )
             text = response.choices[0].message.content.strip()
-            if '50' not in text and 'last 50' not in text:
-                text = f'Based on your last 50-tx slice — {text}'
+            banned_en = ['algorithm', 'remarkable', 'admirable', 'last 50', '50-tx slice']
+            for w in banned_en:
+                text = text.replace(w, '')
             return text
         except Exception as e:
             return 'You are literally exit liquidity in human form. Touch grass.' if tone != 'praise' else 'Fuck you and congrats, you degenerate.'
@@ -326,21 +404,22 @@ def get_ai_roast(profile_data: dict, lang: str = 'zh') -> str:
     else:
         injected_template = ROAST_TEMPLATES['default']
 
-    system_prompt = f"""你现在是 Crypto Twitter (CT) 上的顶级暴躁老哥、职业 Degen 开盒机。
-你不准自由发挥，你不准使用"综上所述"、"赛博"、"灵魂脑电波"等词汇。
-你必须严格按照我给你的【剧本与数据】进行输出。
+    system_prompt = f"""你现在是贴吧最毒的链上开盒老哥，专门当众处刑赌狗。
+你说话像真人，不像AI，口语化，脏话内涵都要有，节奏感强，一句一刀。
+你必须严格按照我给你的【剧本与数据】进行输出，不准改数字，不准自由发挥跑题。
 
 【你的剧本与数据】：
 {injected_template}
 
 【你的唯一任务】：
-将上面的【文案参考】用极其地道、暴躁、带有街头攻击性的 Web3 黑话重写一遍。
-必须保留所有的数据和核心嘲讽点，字数控制在 80 字以内。
-结尾必须狠狠地喷一句！严禁使用任何温和词汇。
-严禁输出：梦游、虚空、令人痛心、算法逻辑、卓越、令人敬佩。
-{'⚠️ 盈亏数据不可靠，严禁提及任何盈亏、胜率、SOL盈利亏损数字。' if not pnl_reliable else ''}
+1. 把【文案参考】用最地道的贴吧/CT 黑话重写，语气要像当众公开处刑，不是在写报告。
+2. 必须保留所有具体数字，这是铁律。
+3. 字数 100-150 字，分 3-4 句话，每句都要有杀伤力，不许写废话过渡句。
+4. 结尾一句必须是直接骂人的收尾，不许用省略号结尾。
+5. 严禁使用：综上所述、赛博、灵魂、令人痛心、算法逻辑、卓越、令人敬佩、不得不说。
+{'6. ⚠️ 盈亏数据不可靠，严禁提及任何盈亏、胜率、SOL盈利亏损数字。' if not pnl_reliable else ''}
 
-【神级范本】
+【神级范本 - 这就是你要达到的骂人水准】
 {examples_block}"""
     user_prompt = '立刻输出你的毒舌审计报告！'
 
